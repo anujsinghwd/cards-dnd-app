@@ -1,5 +1,7 @@
+import { HomePage } from './Pages';
+
 const App = () => {
-    return 'Hey User!';
-}
+  return <HomePage />;
+};
 
 export default App;
