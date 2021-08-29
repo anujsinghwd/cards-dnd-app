@@ -19,6 +19,16 @@
 - `npm run build`
 - `serve -s dist`
 
+## Built With
+* [javascript](https://developer.mozilla.org/bm/docs/Web/JavaScript)
+* [React Js](https://reactjs.org/)
+* [Webpack](https://webpack.js.org/)
+* [Github Pages](https://pages.github.com/)
+* [React DND](https://react-dnd.github.io/react-dnd/)
+* [Redux](https://redux.js.org/)
+* [Styled Components](https://styled-components.com/)
+* [ESLint](https://eslint.org/)
+
 
 ## Contribution Guide
 - First Checkout to main branch and take latest pull
