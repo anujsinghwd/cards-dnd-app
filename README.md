@@ -3,12 +3,19 @@
 ### Prerequisite
 - `Node`
 - `npm` or `yarn`
+- `npm install serve -g`  -> To run production build locally
 
 ### Run Local
 - `git clone git@github.com:anujsinghwd/cards-dnd-app.git`
 - `cd cards-dnd-app && npm install`
 - `npm start`
 - Navigate To Browser - <a>http://localhost:8080</a>
+
+### Run Production Build
+- `git clone git@github.com:anujsinghwd/cards-dnd-app.git`
+- `cd cards-dnd-app && npm install`
+- `npm run build`
+- `serve -s dist`
 
 
 ## Contribution Guide
