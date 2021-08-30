@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
+import useEventListener from '@use-it/event-listener'
 
 import { 
   DragItem, 
@@ -9,6 +10,8 @@ import {
   TitleContainer, 
   ViewImage 
 } from "../../components";
+
+const ESCAPE_KEYS = ['27', 'Escape'];
 
 const HomePage = () => {
   const { items, moveItem } = useContext(GridContext);
@@ -25,16 +28,20 @@ const HomePage = () => {
     }
   }
 
+  const onKeyPressHandler = ({ key }) => {
+    if (ESCAPE_KEYS.includes(String(key))) {
+      setImageDialog(false);
+    }
+  }
+
+  useEventListener('keydown', onKeyPressHandler);
+
   const loadFullImage = (url) => {
     setCurrentImage(url);
     setImageDialog(true);
   }
 
   const closeImageModal = () => setImageDialog(false);
-
-  const handleKeyDown = (event) => {
-    console.log(event.keyCode);
-  }
 
   return (
     <Grid>
@@ -76,7 +83,7 @@ const HomePage = () => {
           </GridItem>
         </DragItem>
       ))}
-      {imageDialog && <ViewImage onKeyDown={handleKeyDown} closeImageModal={closeImageModal} src={currentImage} />}
+      {imageDialog && <ViewImage closeImageModal={closeImageModal} src={currentImage} />}
     </Grid>
   )
 };

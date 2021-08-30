@@ -38,6 +38,7 @@
     "webpack-dev-server": "^4.0.0"
   },
   "dependencies": {
+    "@use-it/event-listener": "^0.1.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dnd": "^14.0.3",
