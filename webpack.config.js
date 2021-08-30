@@ -21,7 +21,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 use: [
                     'style-loader', {
                         loader: 'css-loader', options: {
@@ -36,7 +36,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.scss', '.json']
+        extensions: ['.js', '.jsx', '.scss', '.json', '.css']
     },
     plugins: [
         new HTMLWebpackPlugin({

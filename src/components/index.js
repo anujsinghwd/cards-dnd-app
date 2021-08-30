@@ -3,6 +3,8 @@ import GridContext, { GridProvider } from "./GridContext";
 import DragItem from "./DragItem";
 import { ImageModal, ModalContent } from "./Modal";
 import ViewImage from "./ViewImage";
+import LoginForm from "./auth";
+import PrivateRoute from "./PrivateRoute";
 
 export {
     Grid,
@@ -15,5 +17,7 @@ export {
     TitleContainer,
     ImageModal,
     ModalContent,
-    ViewImage
+    ViewImage,
+    LoginForm,
+    PrivateRoute
 }

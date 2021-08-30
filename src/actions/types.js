@@ -1,1 +1,2 @@
 export const GET_HOME_PAGE_DATA = "GET_HOME_PAGE_DATA";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
