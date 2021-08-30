@@ -50,7 +50,7 @@ const LoginForm = ({onSubmitFormData}) => {
                         border: 'none',
                         borderRadius: '4px',
                         cursor: 'pointer'
-                    }} type="submit">login</button>
+                    }} type="submit">Login</button>
                 </form>
             </FormContainer>
         </LoginContainer>

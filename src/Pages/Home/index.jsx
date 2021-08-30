@@ -1,19 +1,23 @@
 import React, { useContext, useRef, useState } from "react";
-import useEventListener from '@use-it/event-listener'
+import { useDispatch } from "react-redux";
+import useEventListener from '@use-it/event-listener';
 
-import { 
-  DragItem, 
-  Grid, 
-  GridItem, 
-  GridContext, 
-  CardContainer, 
-  TitleContainer, 
-  ViewImage 
+import { logoutUser } from "../../actions";
+
+import {
+  DragItem,
+  Grid,
+  GridItem,
+  GridContext,
+  CardContainer,
+  TitleContainer,
+  ViewImage
 } from "../../components";
 
 const ESCAPE_KEYS = ['27', 'Escape'];
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const { items, moveItem } = useContext(GridContext);
 
   const [loading, setLoading] = useState(true);
@@ -44,47 +48,63 @@ const HomePage = () => {
   const closeImageModal = () => setImageDialog(false);
 
   return (
-    <Grid>
-      {items.map(item => (
-        <DragItem key={item.id} id={item.id} onMoveItem={moveItem}>
-          <GridItem>
-            <div style={{ display: loading ? "block" : "none" }}>
-              <div style={{ paddingTop: '100.000%', position: "relative" }}>
-                <img
-                  src="https://i.stack.imgur.com/h6viz.gif"
-                  width="100%"
-                  height="100%"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0
-                  }}
-                  frameBorder="0"
-                  allowFullScreen
-                />
+    <>
+      <div style={{
+        textAlign: 'end',
+        padding: 10
+      }}>
+        <button style={{
+          backgroundColor: '#FF0000',
+          color: '#FFFFFF',
+          padding: '7px 29px',
+          margin: '8px 0',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer'
+        }} onClick={() => dispatch(logoutUser())}>Logout</button>
+      </div>
+      <Grid>
+        {items.map(item => (
+          <DragItem key={item.id} id={item.id} onMoveItem={moveItem}>
+            <GridItem>
+              <div style={{ display: loading ? "block" : "none" }}>
+                <div style={{ paddingTop: '100.000%', position: "relative" }}>
+                  <img
+                    src="https://i.stack.imgur.com/h6viz.gif"
+                    width="100%"
+                    height="100%"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0
+                    }}
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
               </div>
-            </div>
-            <CardContainer style={{ display: loading ? "none" : "block" }}>
-              <TitleContainer>
-                <h4>{item.attr}</h4>
-              </TitleContainer>
-              <img
-                src={item.src}
-                onLoad={imageLoaded}
-                alt={item.attr}
-                style={{
-                  maxWidth: '100%',
-                  backgroundPosition: '50%',
-                  backgroundSize: 'cover'
-                }}
-                onClick={() => loadFullImage(item.src)}
-              />
-            </CardContainer>
-          </GridItem>
-        </DragItem>
-      ))}
-      {imageDialog && <ViewImage closeImageModal={closeImageModal} src={currentImage} />}
-    </Grid>
+              <CardContainer style={{ display: loading ? "none" : "block" }}>
+                <TitleContainer>
+                  <h4>{item.attr}</h4>
+                </TitleContainer>
+                <img
+                  src={item.src}
+                  onLoad={imageLoaded}
+                  alt={item.attr}
+                  style={{
+                    maxWidth: '100%',
+                    backgroundPosition: '50%',
+                    backgroundSize: 'cover'
+                  }}
+                  onClick={() => loadFullImage(item.src)}
+                />
+              </CardContainer>
+            </GridItem>
+          </DragItem>
+        ))}
+        {imageDialog && <ViewImage closeImageModal={closeImageModal} src={currentImage} />}
+      </Grid>
+    </>
   )
 };
 
