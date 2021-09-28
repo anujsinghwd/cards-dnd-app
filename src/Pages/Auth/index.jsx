@@ -8,7 +8,7 @@ const LoginPage = () => {
     const { isAuthenticated } = useSelector(state => state.auth);
 
     if(isAuthenticated) {
-        window.location.href = '/';
+        window.location.href = '/dashboard';
       }
 
     const LoginUser = data => {

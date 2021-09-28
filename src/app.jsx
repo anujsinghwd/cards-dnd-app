@@ -24,7 +24,7 @@ const App = () => {
     const currentTime = Date.now() / 1000;
     if (decoded.expires < currentTime) {
       store.dispatch(logoutUser());
-      window.location.href = '/login';
+      window.location.href = '/';
     }
   }
 
@@ -44,13 +44,13 @@ const App = () => {
 
   return (
     <Switch>
-      <Route exact path="/login">
+      <Route exact path="/">
         <LoginPage />
       </Route>
       <DndProvider backend={HTML5Backend}>
         {homePageData && (
           <GridProvider homePageData={homePageData} updateCardsData={updateCardsData}>
-            <PrivateRoute exact path="/" component={HomePage} />
+            <PrivateRoute exact path="/dashboard" component={HomePage} />
           </GridProvider>
         )}
       </DndProvider>
