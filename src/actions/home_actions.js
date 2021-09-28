@@ -5,6 +5,13 @@ import axios from 'axios';
 // Load Sample Data
 import sampleItems from '../data/SampleItems';
 
+export const setHomeData = (data) => dispatch => {
+  dispatch({
+    type: GET_HOME_PAGE_DATA,
+    payload: data
+  });
+}
+
 export const getHomePageData = (user_id) => dispatch => {
   axios
     .get(`http://localhost:8000/user/${user_id}`)

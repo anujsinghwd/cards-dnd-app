@@ -10,13 +10,11 @@ import { store } from './Root';
 import { HomePage, LoginPage } from './Pages';
 import { GridProvider, PrivateRoute } from './components';
 import { getHomePageData, setCurrentUser, logoutUser, updateCards } from './actions';
+import SampleItems from './data/SampleItems';
 
 const App = () => {
   const dispatch = useDispatch();
-
   const { homePageData } = useSelector((state) => state.home);
-  const user = JSON.parse(localStorage.user_data_cats_app_user);
-  const userSettings = JSON.parse(user.settings);
   // Check for tokens
   if (localStorage.user_data_cats_app_token && localStorage.user_data_cats_app_user) {
     setAuthToken(localStorage.user_data_cats_app_token);
@@ -31,11 +29,17 @@ const App = () => {
   }
 
   const updateCardsData = (data) => {
-    dispatch(updateCards(user.id, data));
+    if(localStorage?.user_data_cats_app_user) {
+      const user = JSON.parse(localStorage.user_data_cats_app_user);
+      dispatch(updateCards(user.id, data));
+    }
   }
 
   useEffect(() => {
-    dispatch(getHomePageData(user.id));
+    if(localStorage?.user_data_cats_app_user) {
+      const user = JSON.parse(localStorage.user_data_cats_app_user);
+      dispatch(getHomePageData(user.id));
+    }
   }, []);
 
   return (

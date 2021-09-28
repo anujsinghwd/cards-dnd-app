@@ -16,6 +16,7 @@ export const loginUser = userInfo => dispatch => {
             localStorage.setItem('user_data_cats_app_token', token);
             localStorage.setItem('user_data_cats_app_user', JSON.stringify(user));
             // Set Token to AuthHeader
+            
             setAuthToken(token);
             // Set Current User
             dispatch(setCurrentUser(user));
