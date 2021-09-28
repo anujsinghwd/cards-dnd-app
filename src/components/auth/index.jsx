@@ -4,7 +4,7 @@ import { LoginContainer, FormContainer } from "./Login";
 
 const LoginForm = ({onSubmitFormData}) => {
     const [state, setState] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -14,7 +14,7 @@ const LoginForm = ({onSubmitFormData}) => {
 
     const onSubmitForm = evt => {
         evt.preventDefault();
-        if(state.username && state.password) {
+        if(state.email && state.password) {
             onSubmitFormData(state);
         }
     }
@@ -31,7 +31,7 @@ const LoginForm = ({onSubmitFormData}) => {
                         border: '1px solid #ccc',
                         borderRadius: '4px',
                         boxSizing: 'border-box'
-                    }} type="text" placeholder="email" name="username" onChange={onInputChange} />
+                    }} type="text" placeholder="email" name="email" onChange={onInputChange} />
                     <input style={{
                         width: '100%',
                         padding: '12px 20px',

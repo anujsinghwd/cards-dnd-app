@@ -1,17 +1,21 @@
-import { GET_HOME_PAGE_DATA } from "../actions/types";
+import { GET_HOME_PAGE_DATA, UPDATE_CARDS } from '../actions/types';
 
 const defaultState = {
-    homePageData: null
+  homePageData: null,
 };
 
 export default (state = defaultState, action) => {
-    switch (action.type) {
-      case GET_HOME_PAGE_DATA:
-          return {
-              ...state,
-              homePageData: action.payload
-          }
-      default:
-        return state;
-    }
+  switch (action.type) {
+    case GET_HOME_PAGE_DATA:
+      return {
+        ...state,
+        homePageData: action.payload,
+      };
+    case UPDATE_CARDS:
+      return {
+        ...state
+      }
+    default:
+      return state;
+  }
 };
